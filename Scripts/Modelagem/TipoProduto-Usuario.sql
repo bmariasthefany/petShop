@@ -1,0 +1,29 @@
+CREATE TABLE Usuario (
+	id SMALLINT
+		CONSTRAINT id_PK PRIMARY KEY IDENTITY(1, 1),
+	login NVARCHAR(50) NOT NULL,
+	senha NVARCHAR(10) NOT NULL
+)
+
+INSERT INTO Usuario(login, senha)
+VALUES ('mariasthefany', 111)
+
+ALTER TABLE TipoProduto DROP COLUMN Valor
+ALTER TABLE TipoProduto ADD Ativo BIT 
+
+
+ALTER TABLE TipoProduto DROP COLUMN Tipo
+ALTER TABLE TipoProduto ADD Tipo nvarchar(50)
+ALTER TABLE Usuario ALTER COLUMN senha NVARCHAR(32) NOT NULL
+
+ALTER TABLE Usuario ADD nome NVARCHAR(100)
+ALTER TABLE Usuario ALTER COLUMN nome NVARCHAR(100) NOT NULL
+
+SELECT * FROM Usuario
+
+
+
+
+
+
+

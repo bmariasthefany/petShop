@@ -1,0 +1,21 @@
+﻿body {
+    background-color: #471CA8;
+}
+
+.login-section {
+    color: white;
+    
+    border: 1px solid red;
+}
+
+.logo {
+    background-color: #471CA8;
+    width: 300px;
+    height: 500px;
+}
+
+.login {
+    background-color: #FFFFFF;
+    width: 500px;
+    height: 500px;
+}

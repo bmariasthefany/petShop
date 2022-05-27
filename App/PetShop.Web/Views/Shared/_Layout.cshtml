@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - PetShop</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Pet Shop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Cadastro
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Cliente", "Cliente", "Cadastro")</li>
+                                <li>@Html.ActionLink("Pet", "Pet", "Cadastro")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Funcionario", "Funcionario", "Cadastro")</li>
+                                <li>@Html.ActionLink("Perfis de funcionário", "PerfisFunc", "Cadastro")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Produtos", "Produtos", "Cadastro")</li>
+                                <li>@Html.ActionLink("Tipos de produtos", "Index", "CadTipoProduto")</li>
+                                <li>@Html.ActionLink("Marcas de produtos", "MarcaProduto", "Cadastro")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Usuários", "Usuario", "Cadastro")</li>
+                                <li>@Html.ActionLink("Perfis de Usuário", "PerfilUsuario", "Cadastro")</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Agendamento
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Produtos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Operações
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Inventário de Estoque", "InventarioEstoque", "Operacao")</li>
+                                <li>@Html.ActionLink("Entrada de produtos", "EntradaProduto", "Operacao")</li>
+                                <li>@Html.ActionLink("Saída de produtos", "SaidaProduto", "Operacao")</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Relatórios
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Cliente", "Cliente", "Relatorio")</li>
+                                <li>@Html.ActionLink("Vendas", "Vendas", "Relatorio")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    using (Html.BeginForm("LogOff", "Conta", FormMethod.Post, new { id = "logoffForm" }))
+                    {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Sobre", "Sobre", "Home")</li>
+                        <li><a href="#">Olá @User.Identity.Name</a></li>
+                        <li><a href="javascript:document.getElementById('logoffForm').submit()">Sair</a></li>
+                    </ul>
+                    }
+                }
+                else
+                {
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Login", "Login", "Conta")</li>
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - PetShop - Com ❤ Maria</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
